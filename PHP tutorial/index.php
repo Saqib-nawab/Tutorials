@@ -1,40 +1,21 @@
+<?php
+//Echoing a message"
+echo "i love pizza <br>";
+echo "its really good <br>";
+
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>GET and POST Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
-
-    <h2>GET Method Form</h2>
-    <form method="GET" action="form.php">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <br><br>
-        <input type="submit" value="Submit GET">
-    </form>
-
-    <h2>POST Method Form</h2>
-    <form method="POST" action="form.php">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email">
-        <br><br>
-        <input type="submit" value="Submit POST">
-    </form>
-
-    <h2>Form Data</h2>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['name'])) {
-        $name = htmlspecialchars($_GET['name']);
-        echo "GET Method: Name = " . $name . "<br>";
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
-        $email = htmlspecialchars($_POST['email']);
-        echo "POST Method: Email = " . $email . "<br>";
-    }
-    ?>
+    <p>Adding HTML code to a PHP file</p>
 </body>
 
 </html>
