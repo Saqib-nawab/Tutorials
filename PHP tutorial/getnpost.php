@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <title>GET and POST Demo</title>
+    <title>GET and POST</title>
 </head>
 
 <body>
 
-    <h2>GET Method Form</h2>
-    <form method="GET" action="form.php">
+    <h2>GET Method Form Demo</h2>
+    <form method="GET" action="index.php">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
         <br><br>
@@ -16,7 +16,7 @@
     </form>
 
     <h2>POST Method Form</h2>
-    <form method="POST" action="form.php">
+    <form method="POST" action="index.php">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email">
         <br><br>
@@ -34,6 +34,11 @@
         $email = htmlspecialchars($_POST['email']);
         echo "POST Method: Email = " . $email . "<br>";
     }
+
+    //or simply
+    // $email = $_POST['email'];
+    // echo "POST Method: Email = " . $email . "<br>";
+
     ?>
 </body>
 
