@@ -17,3 +17,8 @@ include("header.html");
 </body>
 
 </html>
+
+<?php
+include("footer.html");
+
+?>
