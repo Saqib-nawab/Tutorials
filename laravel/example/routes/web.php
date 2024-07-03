@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
@@ -20,6 +19,9 @@ Route::get('/jobs', function () {
 //new route for getting inteded job
 Route::get('/jobs/{id}', function ($id) {
     $job = Job::find($id);
+    if (!$job) {
+        abort(404);
+    }
     // dd($job);
     return View('job', ['job' => $job]);
 });
