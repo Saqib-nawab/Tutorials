@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-full bg-gray-100">
 
 <head>
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
     </style>
 </head>
 
-<body class=" font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="h-full">
     <!--
         This example requires updating your template:
 
@@ -41,7 +41,7 @@
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                                    <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
+                                    <x-nav-link href="/jobs" :active="request()->is('about')">Jobs</x-nav-link>
                                     <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
                                 </div>
                             </div>
