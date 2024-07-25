@@ -11,10 +11,11 @@ const { TODOS } = require("./todo");
 async function startServer() {
     const app = express();
     const server = new ApolloServer({
+        //the ! represent required field
         typeDefs: `
         type User {
             id: ID!
-            name: String!
+            name: String!    
             username: String!
             email: String!
             phone: String!
