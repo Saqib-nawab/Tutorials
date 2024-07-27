@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['user', 'shop_owner', 'admin'], default: 'user' }
+    role: { type: String, enum: ['user', 'shop_owner', 'admin'], default: 'user' } //we have 3 rolebased authorization
 });
 
 const User = mongoose.model('User', UserSchema);
