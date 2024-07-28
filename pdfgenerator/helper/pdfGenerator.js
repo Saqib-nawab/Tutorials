@@ -1,8 +1,8 @@
-const pupp = require("puppeteer");
-const hbs = require("handlebars");
-const path = require("path");
-const fs = require("fs-extra");
-const fss = require("fs");
+const pupp = require("puppeteer"); //A Node library for controlling headless Chrome or Chromium
+const hbs = require("handlebars"); //A templating engine for generating HTML
+const path = require("path"); //for navigation
+const fs = require("fs-extra"); //A module that extends Node's fs with additional methods
+const fss = require("fs"); //standard file system module
 
 const compile = async function (templateName, data) {
   const templateFilePath = path.join(
@@ -13,40 +13,34 @@ const compile = async function (templateName, data) {
   const html = await fs.readFile(templateFilePath, "utf-8");
   return hbs.compile(html)(data);
 };
+//compiles the handlebar html template with the data feeded from index.js
 
 exports.pdfGenerator = async (fileName, data) => {
-  try {
+  try { //Launches a headless (no GUI) browser instance with Puppeteer
     const browser = await pupp.launch({
       args: ["--no-sandbox"],
       headless: "new"
     });
-    const page = await browser.newPage();
+    const page = await browser.newPage(); //launching on a new page
 
     const content = await compile("page", data);
 
-    await page.setContent(content);
+    await page.setContent(content); //Using the compile function to get HTML content from the Handlebars template with the provided data.
     await page.emulateMediaType("screen");
 
+    //setting download path
     const downloadPath = path.join(
       process.cwd(),
       "generatedFile",
       `${fileName}-${Date.now()}.pdf`
     );
 
-    let buffer = await page.pdf({
+    let buffer = await page.pdf({ //necessary pdf layout configuration
       path: downloadPath,
       format: "A4",
       margin: { top: 20 },
       printBackground: true,
     });
-
-    //if you don't want to save the file on disk you can uncomment this code
-    // fss.unlink(downloadPath, (err => {
-    //   if (err) console.log(err);
-    //   else {
-    //     console.log("Temporary report pdf deleted");
-    //   }
-    // }));
 
     await browser.close();
 
